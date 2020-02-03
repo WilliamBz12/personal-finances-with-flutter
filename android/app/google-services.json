@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "111995746748",
+    "firebase_url": "https://william-d99be.firebaseio.com",
+    "project_id": "william-d99be",
+    "storage_bucket": "william-d99be.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:111995746748:android:5dcd53ba6ca3269436d3b9",
+        "android_client_info": {
+          "package_name": "com.finances.localltec.personal_finances"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "111995746748-ppkpmt7gn6vu1973qs49b9s5rnmhort2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQyHLEj8firkQR6AqpnqYSA5teqVqw9MI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "111995746748-ppkpmt7gn6vu1973qs49b9s5rnmhort2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:111995746748:android:c85240f079bb29bb36d3b9",
+        "android_client_info": {
+          "package_name": "com.localltec.efinances"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "111995746748-ppkpmt7gn6vu1973qs49b9s5rnmhort2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQyHLEj8firkQR6AqpnqYSA5teqVqw9MI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "111995746748-ppkpmt7gn6vu1973qs49b9s5rnmhort2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
