@@ -24,7 +24,6 @@ class AuthBloc extends BlocBase {
       if (user != null) {
         _userController.add(user?.uid);
       }
-      sleep(Duration(seconds: 2));
       _authStatusController.add((user?.uid == null)
           ? AuthStatus.NOT_LOGGED_IN
           : AuthStatus.LOGGED_IN);

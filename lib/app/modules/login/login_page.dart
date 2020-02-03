@@ -1,3 +1,4 @@
+import 'package:flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:personal_finances/app/modules/login/login_module.dart';
 import 'package:personal_finances/app/routes/routes.gr.dart';
@@ -24,9 +25,23 @@ class _LoginPageState extends State<LoginPage> {
     setState(() => _loading = true);
     final response = await _loginBloc.submit();
     setState(() => _loading = false);
-    if (response) {
-      Navigator.pushReplacementNamed(context, Router.homeModule);
-    }
+
+    response.fold((error) => _buildSnackbar, (result) {
+      if (result) {
+        Navigator.pushReplacementNamed(context, Router.homeModule);
+      } else {
+        _buildSnackbar(message: "Error desconhecido");
+      }
+    });
+  }
+
+  void _buildSnackbar({String message}) {
+    Flushbar(
+      backgroundColor: AppColors.danger,
+      message: message,
+      animationDuration: Duration(seconds: 1),
+      duration: Duration(seconds: 2),
+    ).show(context);
   }
 
   @override
@@ -41,7 +56,6 @@ class _LoginPageState extends State<LoginPage> {
               color: Colors.white,
               borderRadius: BorderRadius.circular(15),
             ),
-          
             padding: EdgeInsets.all(15),
             margin: EdgeInsets.symmetric(horizontal: 15),
             child: Column(

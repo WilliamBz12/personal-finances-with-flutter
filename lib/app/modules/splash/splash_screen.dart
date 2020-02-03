@@ -14,8 +14,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     _authBloc.verifyStatus();
-    //TODO: verificar se está correto
-    _onCheck();
+    Future.delayed(Duration(seconds: 2)).then((_) => _onCheck());
   }
 
   void _onCheck() {
@@ -33,16 +32,26 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: AppColors.turquoise,
-        body: Column(
+    return Scaffold(
+      backgroundColor: AppColors.turquoise,
+      body: Center(
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            Text("Finances", style: TextStyle(fontSize: 28)),
+            Text(
+              "Finances APP",
+              style: TextStyle(
+                fontSize: 28,
+                color: Colors.white,
+                fontWeight: FontWeight.w700,
+              ),
+              textAlign: TextAlign.center,
+            ),
             SizedBox(height: 20),
-            CircularProgressIndicator(),
+            CircularProgressIndicator(
+              valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+            ),
           ],
         ),
       ),

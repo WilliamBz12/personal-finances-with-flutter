@@ -1,4 +1,5 @@
 import 'package:bloc_pattern/bloc_pattern.dart';
+import 'package:dartz/dartz.dart';
 import 'package:personal_finances/app/shared/services/auth_service.dart';
 import 'package:personal_finances/app/shared/validators/validator_email.dart';
 import 'package:personal_finances/app/shared/validators/validator_password.dart';
@@ -25,12 +26,10 @@ class LoginBloc extends BlocBase with ValidatorEmail, ValidatorPassword {
   Function(String) get changeEmail => _emailController.sink.add;
   Function(String) get changePassword => _passwordController.sink.add;
 
-  Future<bool> submit() async {
+  Future<Either> submit() async {
     final validEmail = _emailController.value;
     final validPassword = _passwordController.value;
-
-    final response = await authService.signIn(validEmail, validPassword);
-    return response != null;
+    return await authService.signIn(validEmail, validPassword);
   }
 
   @override
