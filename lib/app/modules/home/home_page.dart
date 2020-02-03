@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:personal_finances/app/app_module.dart';
 import 'package:personal_finances/app/modules/home/home_module.dart';
 import 'package:personal_finances/app/modules/home/widgets/item_transacation_widget.dart';
-import 'package:personal_finances/app/routes/routes.gr.dart';
 import 'package:personal_finances/app/models/transaction_model.dart';
+import 'package:personal_finances/app/shared/blocs/auth_bloc.dart';
 
 import 'home_bloc.dart';
 
@@ -16,6 +17,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final _homeBloc = HomeModule.to.getBloc<HomeBloc>();
+  final _authBloc = AppModule.to.getBloc<AuthBloc>();
 
   @override
   void initState() {
@@ -37,9 +39,6 @@ class _HomePageState extends State<HomePage> {
             if (snapshot.hasError) {
               return Text(snapshot.error.toString());
             }
-            // if (snapshot.data.isEmpty) {
-            //   return Text("Sem atividades");
-            // }
             if (snapshot.hasData) {
               return Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -53,8 +52,7 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () =>
-            Navigator.pushNamed(context, Router.addTransactionPage),
+        onPressed: () => Navigator.pushNamed(context, 'add-transaction-page'),
         child: Icon(Icons.add),
       ),
     );

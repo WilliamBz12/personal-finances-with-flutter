@@ -23,7 +23,7 @@ class CustomButtonWidget extends StatelessWidget {
       width: MediaQuery.of(context).size.height,
       height: 60,
       child: RaisedButton(
-        disabledColor: AppColors.grey,
+        disabledColor: AppColors.aluminumDark,
         child: !isLoading 
           ? Text(
               text,

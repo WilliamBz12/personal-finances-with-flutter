@@ -17,6 +17,7 @@ environment:
   sdk: ">=2.1.0 <3.0.0"
 
 dependencies:
+  firebase_auth: ^0.15.4
   google_fonts: ^0.3.6
   mock_cloud_firestore: ^0.0.17
   direct_select: ^1.0.0
