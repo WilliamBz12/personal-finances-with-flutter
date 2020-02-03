@@ -9,6 +9,8 @@ class CustomTextFieldWidget extends StatefulWidget {
   final bool obscureText;
   final double width;
   final String title;
+  final Function(String) onChanged;
+  final String textError;
 
   final Widget prefixIcon;
   final Widget suffixIcon;
@@ -25,6 +27,8 @@ class CustomTextFieldWidget extends StatefulWidget {
     this.prefixIcon,
     this.suffixIcon,
     this.title,
+    this.onChanged,
+    this.textError,
   });
 
   @override
@@ -49,6 +53,7 @@ class _CustomTextFieldWidgetState extends State<CustomTextFieldWidget> {
             keyboardType: widget.keyboardType,
             obscureText: widget.obscureText,
             controller: widget.controller,
+            onChanged: widget.onChanged,
             onTap: widget.onTap,
             enableInteractiveSelection: false,
             style: _textStyle,
@@ -63,6 +68,7 @@ class _CustomTextFieldWidgetState extends State<CustomTextFieldWidget> {
               prefixIcon: widget.prefixIcon != null ? widget.prefixIcon : null,
               suffixIcon: widget.suffixIcon != null ? widget.suffixIcon : null,
               hintStyle: _textStyle.copyWith(color: Color(0xFFB4B7B8)),
+              errorText: widget.textError,
             ),
           ),
         ],
