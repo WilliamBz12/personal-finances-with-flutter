@@ -9,7 +9,7 @@ class HomeService {
   Future<Either<String, Stream<List<TransactionModel>>>>
       fetchAllTransaction() async {
     try {
-      final response = transactionRepository.fetchAll();
+      final response = await transactionRepository.fetchAll();
       return Right(response);
     } on Exception {
       return Left("Não funcionou");

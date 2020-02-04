@@ -1,3 +1,4 @@
+import 'package:personal_finances/app/core/firestore_client_provider.dart';
 import 'package:personal_finances/app/modules/home/home_service.dart';
 import 'package:personal_finances/app/modules/home/home_bloc.dart';
 import 'package:bloc_pattern/bloc_pattern.dart';
@@ -13,7 +14,9 @@ class HomeModule extends ModuleWidget {
 
   @override
   List<Dependency> get dependencies => [
-        Dependency((i) => TransactionRepository()),
+        Dependency((i) => TransactionRepository(
+              firestoreClientProvider: FirestoreClientProvider(),
+            )),
         Dependency((i) => HomeService(transactionRepository: i.get())),
       ];
 

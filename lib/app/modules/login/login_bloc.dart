@@ -26,7 +26,7 @@ class LoginBloc extends BlocBase with ValidatorEmail, ValidatorPassword {
   Function(String) get changeEmail => _emailController.sink.add;
   Function(String) get changePassword => _passwordController.sink.add;
 
-  Future<Either> submit() async {
+  Future<Either<String, bool>> submit() async {
     final validEmail = _emailController.value;
     final validPassword = _passwordController.value;
     return await authService.signIn(validEmail, validPassword);

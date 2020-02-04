@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mock_cloud_firestore/mock_cloud_firestore.dart';
 import 'package:mock_cloud_firestore/mock_types.dart';
+import 'package:personal_finances/app/core/firestore_client_provider.dart';
 import 'package:personal_finances/app/modules/home/repositories/transaction_repository.dart';
 import 'package:personal_finances/app/models/transaction_model.dart';
 
@@ -12,7 +13,7 @@ void main() {
 
   setUp(() {
     TestWidgetsFlutterBinding.ensureInitialized();
-    repository = TransactionRepository();
+    repository = TransactionRepository(firestoreClientProvider: FirestoreClientProvider());
 
     source = r"""
 {
@@ -38,8 +39,8 @@ void main() {
       expect(repository, isInstanceOf<TransactionRepository>());
     });
 
-    test("Fetch stream list", () {
-      final list = repository.fetchAll();
+    test("Fetch stream list", () async {
+      final list = await repository.fetchAll();
       expect(list, isInstanceOf<Stream<List<TransactionModel>>>());
     });
 

@@ -13,8 +13,8 @@ import 'package:personal_finances/app/modules/home/pages/add_transaction_page.da
 import 'package:personal_finances/app/modules/login/login_module.dart';
 
 class Router {
-  static const splashScreen = '/splash-screen';
-  static const homeModule = '/';
+  static const splashScreen = '/';
+  static const homeModule = '/home-module';
   static const addTransactionPage = '/add-transaction-page';
   static const loginModule = '/login-module';
   static GlobalKey<NavigatorState> get navigatorKey =>
