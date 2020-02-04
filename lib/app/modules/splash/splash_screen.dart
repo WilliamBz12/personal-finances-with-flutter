@@ -21,10 +21,10 @@ class _SplashScreenState extends State<SplashScreen> {
     _authBloc.outAuthStatus.listen((authStatus) {
       switch (authStatus) {
         case AuthStatus.LOGGED_IN:
-          Navigator.popAndPushNamed(context, '/');
+          Navigator.pushReplacementNamed(context, '/home-module');
           break;
         case AuthStatus.NOT_LOGGED_IN:
-          Navigator.popAndPushNamed(context, '/login-module');
+          Navigator.pushReplacementNamed(context, '/login-module');
           break;
       }
     });

@@ -1,8 +1,7 @@
-import 'package:flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:personal_finances/app/modules/login/login_module.dart';
-import 'package:personal_finances/app/routes/routes.gr.dart';
 import 'package:personal_finances/app/shared/style/app_colors.dart';
+import 'package:personal_finances/app/shared/utils/custom_snackbar.dart';
 import 'package:personal_finances/app/shared/widgets/custom_button.dart';
 import 'package:personal_finances/app/shared/widgets/custom_text_field_widget.dart';
 
@@ -26,22 +25,16 @@ class _LoginPageState extends State<LoginPage> {
     final response = await _loginBloc.submit();
     setState(() => _loading = false);
 
-    response.fold((error) => _buildSnackbar, (result) {
-      if (result) {
-        Navigator.pushReplacementNamed(context, Router.homeModule);
-      } else {
-        _buildSnackbar(message: "Error desconhecido");
-      }
-    });
-  }
-
-  void _buildSnackbar({String message}) {
-    Flushbar(
-      backgroundColor: AppColors.danger,
-      message: message,
-      animationDuration: Duration(seconds: 1),
-      duration: Duration(seconds: 2),
-    ).show(context);
+    response.fold(
+      (error) => CustomSnackbar().error(context, message: error),
+      (result) {
+        if (result) {
+          Navigator.pushReplacementNamed(context, '/home-module');
+        } else {
+          CustomSnackbar().error(context, message: "Error desconhecido");
+        }
+      },
+    );
   }
 
   @override

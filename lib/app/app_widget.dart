@@ -7,7 +7,6 @@ class AppWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Slidy',
-      initialRoute: '/splash-screen',
       onGenerateRoute: Router.onGenerateRoute,
       navigatorKey: Router.navigatorKey,
       theme: AppTheme.light,

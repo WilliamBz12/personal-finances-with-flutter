@@ -9,9 +9,9 @@ import '../modules/home/home_module.dart';
 
 @autoRouter
 class $Router {
-  SplashScreen splashScreen;
-  
   @initial
+  SplashScreen splashScreen;
+
   HomeModule homeModule;
 
   AddTransactionPage addTransactionPage;

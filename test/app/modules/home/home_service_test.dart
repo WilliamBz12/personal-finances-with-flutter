@@ -44,7 +44,7 @@ void main() {
       "Should returns all items in Right Side when repository return a Stream list",
       () async {
         when(mockTrasactionRepository.fetchAll())
-            .thenAnswer((_) => Stream.value(_transactions));
+            .thenAnswer((_) async => Stream.value(_transactions));
         final result = await service.fetchAllTransaction();
 
         result.fold(
