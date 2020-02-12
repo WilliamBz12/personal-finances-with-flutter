@@ -9,5 +9,6 @@ class AppTheme {
     backgroundColor: AppColors.background,
     splashColor: AppColors.orange,
     accentColor: AppColors.turquoise,
+    
   );
 }

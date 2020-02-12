@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:personal_finances/app/models/cateogory_model.dart';
+import 'package:personal_finances/app/models/category_model.dart';
 
 class CustomDropdown {
   static void show(

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:personal_finances/app/models/cateogory_model.dart';
+import 'package:personal_finances/app/models/category_model.dart';
 
 class Categories {
-  List<CategoryModel> list = [
+  static final List<CategoryModel> list = [
     CategoryModel(
       id: "food",
       title: "Alimentação",
       isSpeend: true,
-      icon: Icons.home,
+      icon: Icons.wifi_tethering,
     ),
     CategoryModel(
       id: "transport",
@@ -28,4 +28,8 @@ class Categories {
       icon: Icons.attach_money,
     ),
   ];
+
+  static CategoryModel categoryById({String id}) {
+    return list.firstWhere((itemList) => itemList.id == id);
+  }
 }

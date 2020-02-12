@@ -26,12 +26,12 @@ class _LoginPageState extends State<LoginPage> {
     setState(() => _loading = false);
 
     response.fold(
-      (error) => CustomSnackbar().error(context, message: error),
+      (error) => CustomSnackbar.error(context, message: error),
       (result) {
         if (result) {
           Navigator.pushReplacementNamed(context, '/home-module');
         } else {
-          CustomSnackbar().error(context, message: "Error desconhecido");
+          CustomSnackbar.error(context, message: "Error desconhecido");
         }
       },
     );

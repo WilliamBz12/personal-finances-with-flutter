@@ -62,7 +62,7 @@ class _CustomTextFieldWidgetState extends State<CustomTextFieldWidget> {
               border: _inputBorder,
               hintText: widget.hintText,
               contentPadding: EdgeInsets.symmetric(
-                horizontal: 20,
+                horizontal: 5,
                 vertical: 15,
               ),
               prefixIcon: widget.prefixIcon != null ? widget.prefixIcon : null,

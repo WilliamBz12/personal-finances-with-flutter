@@ -12,4 +12,5 @@ class CategoryModel {
     this.isSpeend = false,
     this.icon = Icons.devices_other,
   });
+ 
 }
