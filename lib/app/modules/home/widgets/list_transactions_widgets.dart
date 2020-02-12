@@ -12,18 +12,20 @@ class ListTransactionWidget extends StatelessWidget {
     return StreamBuilder<List<TransactionModel>>(
       stream: _homeBloc.outItems,
       builder: (_, snapshot) {
+        
         if (snapshot.hasError) {
           return Text(snapshot.error.toString());
         }
+
         if (snapshot.hasData) {
+          final _list = snapshot.data;
           return ListView.builder(
-            padding: EdgeInsets.symmetric(vertical: 15),
-            itemBuilder: (_, index) {
-              return ItemTransactionWidget(item: snapshot.data[index]);
-            },
-            itemCount: snapshot.data.length,
+            itemCount: _list.length,
+            itemBuilder: (_, index) =>
+                ItemTransactionWidget(item: _list[index]),
           );
         }
+
         return CircularProgressIndicator();
       },
     );

@@ -12,43 +12,57 @@ class HeadBalanceWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      alignment: Alignment.center,
-      color: Colors.white,
-      child: Column(
+      padding: EdgeInsets.symmetric(vertical: 20, horizontal: 40),
+      alignment: Alignment.centerLeft,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           StreamBuilder<double>(
             stream: _homeBloc.outSpeend,
             builder: (_, snapshot) {
-              if (snapshot.hasData) {
-                return Column(
-                  children: <Widget>[
-                    SizedBox(height: 30),
-                    Text(
-                      "R\$ ${snapshot.data.toStringAsFixed(2).replaceAll(".", ",")}",
-                      style: TextStyle(
-                        color: AppColors.darkBlack,
-                        fontWeight: FontWeight.w700,
-                        fontSize: 28,
-                      ),
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  snapshot.hasData
+                      ? _buildTitle(value: snapshot.data)
+                      : Shimmer.fromColors(
+                          child: _buildTitle(value: 00),
+                          baseColor: Colors.grey[300],
+                          highlightColor: Colors.grey[100],
+                        ),
+                  Text(
+                    "Saldo total",
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: AppColors.lightGrey,
                     ),
-                    Text(
-                      "Saldo total",
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: AppColors.ligthBlack,
-                      ),
-                    ),
-                  ],
-                );
-              }
-              return Shimmer.fromColors(
-                child: SizedBox(height: 30, width: 200),
-                baseColor: Colors.grey[300],
-                highlightColor: Colors.grey[100],
+                  ),
+                ],
               );
             },
           ),
+          Container(
+              width: 60.0,
+              height: 60.0,
+              decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+
+                  image: DecorationImage(
+                      fit: BoxFit.fill,
+
+                      image: NetworkImage("https://i.imgur.com/BoN9kdC.png")))),
         ],
+      ),
+    );
+  }
+
+  Widget _buildTitle({double value}) {
+    return Text(
+      "R\$ ${value.toStringAsFixed(2).replaceAll(".", ",")}",
+      style: TextStyle(
+        color: Colors.white,
+        fontWeight: FontWeight.w900,
+        fontSize: 28,
       ),
     );
   }

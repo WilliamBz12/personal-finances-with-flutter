@@ -9,7 +9,10 @@ class ItemTransactionWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(15),
+      ),
       margin: EdgeInsets.only(top: 10),
       padding: EdgeInsets.symmetric(
         horizontal: 20,
