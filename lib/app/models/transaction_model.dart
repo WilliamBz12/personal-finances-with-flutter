@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:personal_finances/app/models/category_model.dart';
-import 'package:personal_finances/app/shared/utils/categories.dart';
+import 'package:personal_finances/app/shared/utils/cash_to_string.dart';
+import 'package:personal_finances/app/shared/utils/categories_transactions.dart';
 
 class TransactionModel {
   String id;
@@ -36,8 +37,7 @@ class TransactionModel {
     return map;
   }
   
-  CategoryModel get category => Categories.categoryById(id: type);
+  CategoryModel get category => CategoriesTransactions.categoryById(id: type);
 
-  String get valueInReal =>
-     "R\$ ${value.toStringAsFixed(2).replaceAll(".", ",")}";
+  String get valueInReal => CashToString.convertInReais(value: value);
 }

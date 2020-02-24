@@ -10,31 +10,27 @@ class CustomButtonWidget extends StatelessWidget {
   CustomButtonWidget({
     @required this.text,
     @required this.onTap,
-    this.color = AppColors.turquoise,
+    this.color = AppColors.primaryColor,
     this.isLoading = false,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-        color: Colors.transparent,
-      ),
       width: MediaQuery.of(context).size.height,
       height: 60,
       child: RaisedButton(
         disabledColor: AppColors.aluminumDark,
-        child: !isLoading 
-          ? Text(
-              text,
-              style: TextStyle(color: Colors.white),
-            )
-          : CircularProgressIndicator(),
+        child: !isLoading
+            ? Text(
+                text,
+                style: TextStyle(color: Colors.white),
+              )
+            : CircularProgressIndicator(),
         color: color,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(0),
+          borderRadius: BorderRadius.circular(12),
         ),
-        elevation: 0,
         onPressed: !isLoading ? onTap : null,
       ),
     );

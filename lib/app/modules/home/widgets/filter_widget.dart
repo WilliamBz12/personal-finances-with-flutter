@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:personal_finances/app/modules/home/typography/home_typography.dart';
 import 'package:personal_finances/app/shared/style/app_colors.dart';
 
 class FilterWidget extends StatefulWidget {
@@ -7,36 +8,42 @@ class FilterWidget extends StatefulWidget {
 }
 
 class _FilterWidgetState extends State<FilterWidget> {
-  final list = [
+  String selected = 'Todos';
+
+  final _options = [
     'Todos',
     'Entradas',
     'Saídas',
   ];
+
+  void _onTap(String text) {
+    setState(() => selected = text);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
       children: List.generate(
-        list.length,
-        (index) => _buildItem(text: list[index]),
+        _options.length,
+        (index) => _buildItem(text: _options[index]),
       ),
     );
   }
 
   Widget _buildItem({String text, bool isActived = false}) {
-    return FlatButton(
-      onPressed: isActived ? () {} : null,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(15),
-        
-      ),
-      disabledColor: AppColors.lightGrey,
-      color: Colors.white,
-      child: Text(
-        text,
-        style: TextStyle(
-          fontSize: 14,
-          color: Color(0xFF173A61),
-          fontWeight: FontWeight.w600,
+    return Container(
+      margin: EdgeInsets.only(right: 15),
+      child: RaisedButton(
+        onPressed: selected != text ? () => _onTap(text) : null,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15),
+        ),
+        disabledColor: AppColors.darkGrey,
+        color: Colors.white,
+        child: Text(
+          text,
+          style: HomeTypography.filterText,
         ),
       ),
     );

@@ -5,10 +5,9 @@ import 'package:personal_finances/app/shared/style/app_colors.dart';
 class AppTheme {
   static final light = ThemeData(
     textTheme: GoogleFonts.hindTextTheme(),
-    primaryColor: AppColors.turquoise,
+    primaryColor: AppColors.primaryColor,
     backgroundColor: AppColors.background,
     splashColor: AppColors.orange,
-    accentColor: AppColors.turquoise,
-    
+    accentColor: AppColors.primaryColor,
   );
 }

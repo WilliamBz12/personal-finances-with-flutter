@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 class AppColors {
   static const background = Color(0xFFf7f7f7);
   static const blue = Color(0xFF479fb7);
-  static const greenDark = Color(0xFF00ba8b);
-  static const turquoise = Color(0xFF4E75B6);
-  static const turquoiseDark = Color(0xFF01b5bd);
+  static const green = Color(0xFF3EB27B);
+  static const primaryColor = Color(0xFF154798);
+  static const primaryDarkColor = Color(0xFF113D6B);
   static const cyan = Color(0xFF9ef1dd);
   static const orange = Color(0xFFf09674);
   static const black = Color(0xFF303c40);
@@ -23,6 +23,5 @@ class AppColors {
   static const danger = Color(0xFFff4949);
   static const sucess = Color(0xFF13ce66);
   static const warning = Color(0xFFffc82c);
-  static const lightBlue = Color(0xFFECF2FB);
-  static const titleAppBar = Color(0xFF3d494d);
+
 }

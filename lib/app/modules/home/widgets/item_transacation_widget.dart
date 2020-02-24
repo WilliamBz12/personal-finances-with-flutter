@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:personal_finances/app/models/transaction_model.dart';
-import 'package:personal_finances/app/shared/style/app_colors.dart';
+import 'package:personal_finances/app/modules/home/typography/home_typography.dart';
 
 class ItemTransactionWidget extends StatelessWidget {
   final TransactionModel item;
@@ -14,19 +14,10 @@ class ItemTransactionWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(15),
       ),
       margin: EdgeInsets.only(top: 10),
-      padding: EdgeInsets.symmetric(
-        horizontal: 20,
-        vertical: 10,
-      ),
+      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: Row(
         children: <Widget>[
-          CircleAvatar(
-            backgroundColor: AppColors.turquoise,
-            child: Icon(
-              item.category.icon,
-              color: Colors.white,
-            ),
-          ),
+          _buildIcon(),
           SizedBox(width: 20),
           Flexible(
             child: Row(
@@ -36,45 +27,55 @@ class ItemTransactionWidget extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Text(
-                      item.category.title,
-                      style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 16,
-                      ),
-                    ),
-                    Container(
-                      width: 100,
-                      child: Text(
-                        item.description,
-                        softWrap: true,
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: AppColors.ligthBlack,
-                        ),
-                      ),
-                    ),
+                    _buildTitle(),
+                    _buildDescription(),
                   ],
                 ),
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(4),
-                    color: AppColors.lightBlue,
-                  ),
-                  padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                  child: Text(
-                    item.valueInReal,
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                      color: AppColors.turquoise,
-                    ),
-                  ),
-                ),
+                _buildValue(),
               ],
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _buildIcon() {
+    return CircleAvatar(
+      backgroundColor: item.category.color,
+      child: Icon(
+        item.category.icon,
+        color: Colors.white,
+      ),
+    );
+  }
+
+  Widget _buildValue() {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+      child: Text(
+        item.valueInReal,
+        style: HomeTypography.titleItem(color: item.category.color),
+      ),
+    );
+  }
+
+  Widget _buildTitle() {
+    return Text(
+      item.category.title,
+      style: HomeTypography.titleItem(color: item.category.color),
+    );
+  }
+
+  Widget _buildDescription() {
+    return Container(
+      width: 100,
+      child: Text(
+        item.description,
+        softWrap: true,
+        style: HomeTypography.descriptionItem(
+          speend: item.category.isSpeend,
+        ),
       ),
     );
   }

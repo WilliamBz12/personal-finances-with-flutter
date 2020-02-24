@@ -11,7 +11,7 @@ class HomeBloc extends BlocBase {
   final _itemsController = BehaviorSubject<List<TransactionModel>>();
   Stream<List<TransactionModel>> get outItems => _itemsController.stream;
   //.map((list) => list.where((item) => item.type == "alimentacao").toList());
-  Stream<double> get outSpeend => _itemsController.stream.map(sumSpeend);
+  Stream<double> get outBalance => _itemsController.stream.map(sumSpeend);
 
   double sumSpeend(List<TransactionModel> list) {
     final values = list.map((item) => item.value).toList();

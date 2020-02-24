@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:personal_finances/app/models/category_model.dart';
+import 'package:personal_finances/app/shared/style/app_colors.dart';
 
-class Categories {
+class CategoriesTransactions {
   static final List<CategoryModel> list = [
     CategoryModel(
       id: "food",
@@ -26,6 +27,7 @@ class Categories {
       title: "Salário",
       isSpeend: false,
       icon: Icons.attach_money,
+      color: AppColors.green,
     ),
   ];
 

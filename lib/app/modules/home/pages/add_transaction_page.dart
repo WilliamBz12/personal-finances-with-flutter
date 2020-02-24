@@ -4,7 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:personal_finances/app/models/category_model.dart';
 import 'package:personal_finances/app/modules/home/home_module.dart';
 import 'package:personal_finances/app/models/transaction_model.dart';
-import 'package:personal_finances/app/shared/utils/categories.dart';
+import 'package:personal_finances/app/shared/utils/categories_transactions.dart';
 import 'package:personal_finances/app/shared/utils/custom_snackbar.dart';
 import 'package:personal_finances/app/shared/utils/handle_date_modal.dart';
 import 'package:personal_finances/app/shared/widgets/custom_button.dart';
@@ -21,13 +21,13 @@ class AddTransactionPage extends StatefulWidget {
 class _AddTransactionPageState extends State<AddTransactionPage> {
   final _valueController = TextEditingController();
   final _controllerDate = TextEditingController();
-  final _typeController = TextEditingController(text: Categories.list[0].title);
+  final _typeController = TextEditingController(text: CategoriesTransactions.list[0].title);
   final _descriptionController = TextEditingController();
 
   bool _isLoading = false;
 
   DateTime _dateSelected;
-  CategoryModel categorySelected = Categories.list[0];
+  CategoryModel categorySelected = CategoriesTransactions.list[0];
 
   final _homeBloc = HomeModule.to.getBloc<HomeBloc>();
 
@@ -75,10 +75,11 @@ class _AddTransactionPageState extends State<AddTransactionPage> {
 
   @override
   Widget build(BuildContext context) {
-    double _widhtSize = MediaQuery.of(context).size.width;
-
     return AlertDialog(
       content: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(12),
+        ),
         padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
         child: SingleChildScrollView(
           child: Column(
@@ -108,7 +109,7 @@ class _AddTransactionPageState extends State<AddTransactionPage> {
                 onTap: () => CustomDropdown.show(
                   context,
                   onSelect: _categorySelected,
-                  items: Categories.list,
+                  items: CategoriesTransactions.list,
                 ),
               ),
               SizedBox(height: 20),
